@@ -30,9 +30,6 @@ class AvrGccAT9 < Formula
   depends_on "autoconf" => :build
   depends_on "automake" => :build
 
-  # XXX gnu-sed causes problems on macOS?
-  depends_on "gnu-sed" => :build
-
   depends_on arch: :x86_64
 
   depends_on "avr-binutils"
@@ -102,8 +99,8 @@ class AvrGccAT9 < Formula
       --with-bugurl=https://github.com/osx-cross/homebrew-avr/issues
     ]
 
-    # Avoid reference to sed shim XXX WHY?
-    # args << "SED=/usr/bin/sed" if OS.mac?
+    # Avoid reference to sed shim
+    args << "SED=/usr/bin/sed"
 
     mkdir "build" do
       system "../configure", *args
